@@ -1,0 +1,6 @@
+k8s-*/
+etcd-*/
+kubernetes/
+kubernetes.tar.gz
+*.tar.gz
+VERSIONS
