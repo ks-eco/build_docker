@@ -6,3 +6,5 @@ COPY VERSIONS /ks-eco/VERSIONS
 COPY etcd-3.2.24/ /ks-eco/binaries/
 COPY k8s-1.11.0 /ks-eco/binaries/
 
+# idle 
+CMD ["sh", "-c", "tail -f /dev/null"]

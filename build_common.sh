@@ -33,3 +33,22 @@ function download_k8s {
         cp ./kubernetes/server/bin/hyperkube k8s-$1/.
     fi
 }
+
+function download_cni {
+    echo "********" downloading cni "********"
+    mkdir -p cni
+    if [ -f cni/cni-plugins-amd64-v0.6.0 ]; then
+	echo found cni-plugin, skip downloading
+    else
+	echo "********" downloading cni-plugins 0.6.0 "********"
+	wget https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz -O cni/cni-plugins-amd64-v0.6.0.tgz
+	tar xvfz cni/cni-plugins-amd64-v0.6.0.tgz
+    fi
+    if [ -f cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz ]; then
+	echo found containerd, skip downloading
+    else
+	echo "********" downloading containerd-1.2.0 "********"
+	wget https://github.com/containerd/containerd/releases/download/v1.2.0-rc.0/containerd-1.2.0-rc.0.linux-amd64.tar.gz -O cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz
+	tar xvfz cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz
+    fi
+}
