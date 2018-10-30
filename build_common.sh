@@ -43,9 +43,7 @@ function download_cni {
         echo "********" downloading cni-plugins 0.6.0 "********"
         wget https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz -O cni/cni-plugins-amd64-v0.6.0.tgz
     fi
-    cd cni
-    tar xvfz cni-plugins-amd64-v0.6.0.tgz
-    cd -
+    tar xvfz cni/cni-plugins-amd64-v0.6.0.tgz -C cni/
 
     if [ -f cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz ]; then
 	    echo found containerd, skip downloading
@@ -53,7 +51,8 @@ function download_cni {
         echo "********" downloading containerd-1.2.0 "********"
         wget https://github.com/containerd/containerd/releases/download/v1.2.0-rc.0/containerd-1.2.0-rc.0.linux-amd64.tar.gz -O cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz
     fi
-    cd cni
-    tar xvfz containerd-1.2.0-rc.0.linux-amd64.tar.gz
-    cd -
+    tar xvfz cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz -C cni/
+
+    wget https://github.com/opencontainers/runc/releases/download/v1.0.0-rc5/runc.amd64 -O cni/runc.amd64
+    wget https://storage.googleapis.com/kubernetes-the-hard-way/runsc-50c283b9f56bb7200938d9e207355f05f79f0d17 -O cni/runsc.amd64
 }
