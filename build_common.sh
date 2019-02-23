@@ -54,14 +54,14 @@ function download_cni {
     tar xvfz cni/containerd-1.2.0-rc.0.linux-amd64.tar.gz -C cni/
 
     if [ -f cni/runc/runc ]; then
-	echo found runc, skip downloading
+	    echo found runc, skip downloading
     else
-	wget https://github.com/opencontainers/runc/releases/download/v1.0.0-rc5/runc.amd64 -O cni/runc/runc
+	    wget https://github.com/opencontainers/runc/releases/download/v1.0.0-rc5/runc.amd64 -O cni/runc/runc
     fi
     
     if [ -f cni/runc/runsc ]; then
-	echo found runsc, skip downloading	
+	    echo found runsc, skip downloading	
     else
-	wget https://storage.googleapis.com/kubernetes-the-hard-way/runsc-50c283b9f56bb7200938d9e207355f05f79f0d17 -O cni/runc/runsc
+	    wget https://storage.googleapis.com/kubernetes-the-hard-way/runsc-50c283b9f56bb7200938d9e207355f05f79f0d17 -O cni/runc/runsc
     fi
 }
